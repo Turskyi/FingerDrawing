@@ -2,7 +2,9 @@ package ua.turskyi.fingerdrawing
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -10,20 +12,21 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-class CanvasActivity14 : AppCompatActivity() {
+class CanvasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    class SignatureView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
+    class SignatureView(context: Context, attributeSet: AttributeSet?) :
+        View(context, attributeSet) {
         private val paint: Paint = Paint()
         private val path: Path = Path()
 
         init {
             paint.color = ContextCompat.getColor(
-                    context,
-                    R.color.colorPrimary
+                context,
+                R.color.colorPrimary
             )
             paint.style = Paint.Style.STROKE
             paint.strokeJoin = Paint.Join.ROUND
@@ -44,6 +47,7 @@ class CanvasActivity14 : AppCompatActivity() {
                     path.lineTo(event.x, event.y)
                     invalidate()
                 }
+
                 MotionEvent.ACTION_UP -> {
                 }
             }
